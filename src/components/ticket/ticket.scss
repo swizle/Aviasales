@@ -1,0 +1,55 @@
+.ticket {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+  width: 502px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.10);
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    .price {
+      color: #2196F3;
+    }
+
+    .logo {
+      height: 36px;
+    }
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+
+    .route,
+    .length,
+    .stops {
+      width: 30%;
+    }
+
+    .container {
+      margin-top: 10px;
+    }
+
+    .city {
+      text-transform: uppercase;
+      color: #A0B0B9;
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .time {
+      color: darkslategray;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+}

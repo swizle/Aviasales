@@ -1,0 +1,38 @@
+html,
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  margin: 0;
+  padding: 0
+}
+
+;
+
+html,
+body {
+  background-color: #F3F7FA;
+  font-family: 'microsoft sans serif';
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+
+  .logo {
+    margin: 50px;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+main {
+  display: flex;
+}
