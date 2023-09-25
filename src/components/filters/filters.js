@@ -8,29 +8,39 @@ export default function Filters() {
       <p className="title">количество пересадок</p>
       <ul className="filters">
         <li className="filter">
-          <input className="input" type="checkbox" />
-          <span className="checkBox" />
-          Все
+          <label htmlFor="1" className="container">
+            <input id="1" className="input" type="checkbox" />
+            <span className="checkBox" />
+            Все
+          </label>
         </li>
         <li className="filter">
-          <input className="input" type="checkbox" />
-          <span className="checkBox" />
-          Без пересадок
+          <label htmlFor="2" className="container">
+            <input id="2" className="input" type="checkbox" />
+            <span className="checkBox" />
+            Без пересадок
+          </label>
         </li>
         <li className="filter">
-          <input className="input" type="checkbox" />
-          <span className="checkBox" />
-          1 пересадка
+          <label htmlFor="3" className="container">
+            <input id="3" className="input" type="checkbox" />
+            <span className="checkBox" />
+            1 пересадка
+          </label>
         </li>
         <li className="filter">
-          <input className="input" type="checkbox" />
-          <span className="checkBox" />
-          2 пересадки
+          <label htmlFor="4" className="container">
+            <input id="4" className="input" type="checkbox" />
+            <span className="checkBox" />
+            2 пересадки
+          </label>
         </li>
         <li className="filter">
-          <input className="input" type="checkbox" />
-          <span className="checkBox" />
-          3 пересадки
+          <label htmlFor="5" className="container">
+            <input id="5" className="input" type="checkbox" />
+            <span className="checkBox" />
+            3 пересадки
+          </label>
         </li>
       </ul>
     </section>

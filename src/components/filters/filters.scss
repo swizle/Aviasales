@@ -23,12 +23,17 @@
 
     .filter {
       height: 40px;
-      cursor: pointer;
       font-size: 12px;
       padding-left: 50px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+
+      .container {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
 
       .checkBox {
         position: absolute;

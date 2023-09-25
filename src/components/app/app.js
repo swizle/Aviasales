@@ -18,6 +18,7 @@ export default function App() {
         <section className="container">
           <Tabs />
           <TicketList />
+          <button className="btnMore" type="button">показать еще 5 билетов!</button>
         </section>
       </main>
     </>
