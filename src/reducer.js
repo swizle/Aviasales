@@ -1,4 +1,8 @@
 /* eslint-disable default-param-last */
+import {
+  TOGGLE_SORT_FILTER, TOGGLE_ALL_FILTERS, GET_SEARCH_ID, GET_TICKETS,
+} from './components/actions';
+
 const initialState = {
   filters: {
     all: false,
@@ -7,18 +11,21 @@ const initialState = {
     twoStops: false,
     threeStops: false,
   },
-  sortBy: '', // здесь храните состояние сортировки
+  searchId: '',
+  tickets: [],
+  stop: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'TOGGLE_SORT_FILTER': {
+    case TOGGLE_SORT_FILTER: {
       const { filterName } = action.payload;
       const updatedFilters = {
         ...state.filters,
         [filterName]: !state.filters[filterName],
       };
 
+      // Проверка для фильтра Все
       if (filterName !== 'all' && Object.keys(updatedFilters)
         .filter((key) => key !== 'all')
         .every((key) => updatedFilters[key])) {
@@ -33,7 +40,7 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-    case 'TOGGLE_ALL_FILTERS': {
+    case TOGGLE_ALL_FILTERS: {
       const { isChecked } = action.payload;
       if (isChecked) {
         // Включаем все фильтры
@@ -60,6 +67,18 @@ const reducer = (state = initialState, action) => {
         },
       };
     }
+
+    case GET_SEARCH_ID:
+      return {
+        ...state,
+        searchId: action.payload,
+      };
+
+    case GET_TICKETS:
+      return {
+        ...state,
+        tickets: action.payload,
+      };
 
     default:
       return state;

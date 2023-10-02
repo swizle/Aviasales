@@ -35,6 +35,7 @@ module.exports = {
     indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
+    'react/prop-types': [0],
     'react/state-in-constructor': ['error', 'never'],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
   },

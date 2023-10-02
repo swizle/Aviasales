@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import './app.scss';
 import logo from './logo.png';
 
 import Filters from '../filters';
-import Tabs from '../tabs';
 import TicketList from '../ticketList';
+import { fetchSearchId } from '../actions';
 
-export default function App() {
+function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchSearchId());
+  }, [dispatch]);
   return (
     <>
       <header>
@@ -16,11 +22,11 @@ export default function App() {
       <main>
         <Filters />
         <section className="container">
-          <Tabs />
           <TicketList />
-          <button className="btnMore" type="button">показать еще 5 билетов!</button>
         </section>
       </main>
     </>
   );
 }
+
+export default App;

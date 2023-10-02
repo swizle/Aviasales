@@ -1,18 +1,23 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { toggleSortFilter, toggleAllFilters } from '../actions';
 
 import './filters.scss';
 
-function Filters({ filters, toggleFilter, toggleAll }) {
+function Filters() {
+  // Используем useSelector для получения данных из хранилища
+  const filters = useSelector((state) => state.filters);
+  // Используем useDispatch для получения функции диспетчеризации
+  const dispatch = useDispatch();
+
   const handleToggleFilter = (filterName) => {
-    toggleFilter(filterName);
+    dispatch(toggleSortFilter(filterName));
   };
 
   const handleToggleAllFilters = (filterName) => {
-    toggleFilter(filterName);
-    toggleAll(!filters.all);
+    // Диспетчеризируем другое действие с помощью useDispatch
+    dispatch(toggleSortFilter(filterName));
+    dispatch(toggleAllFilters(!filters.all));
   };
 
   return (
@@ -89,13 +94,4 @@ function Filters({ filters, toggleFilter, toggleAll }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  filters: state.filters,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  toggleFilter: (filterName) => dispatch(toggleSortFilter(filterName)),
-  toggleAll: (isChecked) => dispatch(toggleAllFilters(isChecked)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filters);
+export default Filters;
