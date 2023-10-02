@@ -32,7 +32,7 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', 'import', 'jsx-a11y'],
   rules: {
-    indent: ['error', 2],
+    indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'react/state-in-constructor': ['error', 'never'],
