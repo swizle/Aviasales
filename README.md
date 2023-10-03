@@ -1,6 +1,5 @@
 ## Vercel adres: ""
-npm i -g vercel
-vercel => config it
+https://aviasales-puce-mu.vercel.app/
 
 ## Available Scripts
 
