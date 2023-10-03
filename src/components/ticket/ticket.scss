@@ -1,12 +1,13 @@
+@import '../../varuables/varuables';
+
 .ticket {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border-radius: 5px;
   margin: 20px;
   padding: 20px;
   width: 502px;
+  background-color: white;
+  border-radius: 5px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.10);
 
   .header {
@@ -16,7 +17,7 @@
     margin-bottom: 10px;
 
     .price {
-      color: #2196F3;
+      color: $btnBlueColor;
     }
 
     .logo {
@@ -41,13 +42,13 @@
 
     .city {
       text-transform: uppercase;
-      color: #A0B0B9;
+      color: $fontLightColor;
       font-size: 12px;
       line-height: 18px;
     }
 
     .time {
-      color: darkslategray;
+      color: $fontColor;
       font-size: 14px;
       line-height: 21px;
     }

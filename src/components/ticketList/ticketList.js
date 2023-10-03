@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './ticketList.scss';
 
 import Ticket from '../ticket';
-import { fetchTickets } from '../actions';
+import { fetchTickets } from '../../actions';
 
 export default function TicketList() {
   const dispatch = useDispatch();
@@ -21,11 +21,11 @@ export default function TicketList() {
     if (searchId) {
       dispatch(fetchTickets(searchId))
         .then(() => {
-          setLoading(false); // Устанавливаем состояние загрузки в false, когда данные загружены
+          setLoading(false);
         })
         .catch((error) => {
           console.error('Error fetching tickets:', error);
-          setLoading(false); // Обработка ошибки и установка состояния загрузки в false
+          setLoading(false);
         });
     }
   }, [dispatch, searchId]);
@@ -54,14 +54,12 @@ export default function TicketList() {
   };
 
   const handleBtnCheap = () => {
-    // Фильтрация билетов по самому дешевому
     const cheapestTickets = [...filteredTickets].sort((a, b) => a.price - b.price);
     setFilteredTickets(cheapestTickets);
     setActiveButton('cheapest');
   };
 
   const handleBtnFast = () => {
-    // Фильтрация билетов по самому быстрому
     const fastestTickets = [...filteredTickets].sort((a, b) => {
       const durationA = a.segments[0].duration + a.segments[1].duration;
       const durationB = b.segments[0].duration + b.segments[1].duration;
@@ -93,7 +91,11 @@ export default function TicketList() {
         </button>
       </section>
       {loading ? (
-        <div className="loader">Загрузка...</div>
+        <section className="loader">
+          <div className="header">
+            <h2>Загрузка...</h2>
+          </div>
+        </section>
       ) : (
         <>
           {filteredTickets.slice(0, listSize).map((ticket) => (

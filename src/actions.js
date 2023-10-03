@@ -44,10 +44,6 @@ export const fetchTickets = (searchId) => async (dispatch) => {
     }));
 
     dispatch(getTickets(updatedTickets));
-
-    if (response.data.stop) {
-      // Здесь вы можете обработать завершение поиска, если необходимо
-    }
   } catch (error) {
     console.error('Error fetching tickets:', error);
   }

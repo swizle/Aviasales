@@ -4,23 +4,25 @@ import { useSelector } from 'react-redux';
 import { format } from 'date-fns';
 
 import './ticket.scss';
-import logo from './logo.png';
 
 export default function Ticket({ ticketId }) {
   const ticket = useSelector((state) => {
-    // Замените 'tickets' на соответствующее имя свойства в вашем стейте Redux
     const { tickets } = state;
 
-    // Найдите билет с заданным ID
     return tickets.find((mytTicket, index) => index === ticketId);
   });
 
   if (!ticket) {
-    // Если билет с заданным ID не найден, можно отобразить сообщение об ошибке или заглушку
-    return <div>Билет не найден</div>;
+    return (
+      <section className="Ticket">
+        <div className="header">
+          <h2>Билет не найден</h2>
+        </div>
+      </section>
+    );
   }
 
-  const { price, segments } = ticket;
+  const { price, carrier, segments } = ticket;
 
   return (
     <section className="Ticket">
@@ -30,7 +32,7 @@ export default function Ticket({ ticketId }) {
           {' '}
           P
         </h2>
-        <img className="logo" src={logo} alt="company logo" />
+        <img className="logo" src={`http://pics.avs.io/110/36/${carrier}.png`} alt="company logo" />
       </div>
       <div className="info">
         <div className="route">

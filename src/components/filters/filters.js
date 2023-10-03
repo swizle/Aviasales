@@ -1,13 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleSortFilter, toggleAllFilters } from '../actions';
+import { toggleSortFilter, toggleAllFilters } from '../../actions';
 
 import './filters.scss';
 
 function Filters() {
-  // Используем useSelector для получения данных из хранилища
   const filters = useSelector((state) => state.filters);
-  // Используем useDispatch для получения функции диспетчеризации
+
   const dispatch = useDispatch();
 
   const handleToggleFilter = (filterName) => {
@@ -15,7 +14,6 @@ function Filters() {
   };
 
   const handleToggleAllFilters = (filterName) => {
-    // Диспетчеризируем другое действие с помощью useDispatch
     dispatch(toggleSortFilter(filterName));
     dispatch(toggleAllFilters(!filters.all));
   };

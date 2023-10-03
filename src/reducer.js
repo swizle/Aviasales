@@ -1,15 +1,15 @@
 /* eslint-disable default-param-last */
 import {
   TOGGLE_SORT_FILTER, TOGGLE_ALL_FILTERS, GET_SEARCH_ID, GET_TICKETS,
-} from './components/actions';
+} from './actions';
 
 const initialState = {
   filters: {
-    all: false,
-    noStops: false,
-    oneStop: false,
-    twoStops: false,
-    threeStops: false,
+    all: true,
+    noStops: true,
+    oneStop: true,
+    twoStops: true,
+    threeStops: true,
   },
   searchId: '',
   tickets: [],

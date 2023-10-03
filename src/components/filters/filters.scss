@@ -1,3 +1,5 @@
+@import '../../varuables/varuables';
+
 .filterList {
   width: 232px;
   height: 252px;
@@ -10,15 +12,12 @@
     padding-left: 20px;
     padding-top: 20px;
     padding-bottom: 10px;
-    margin: 0;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
   }
 
   .filters {
-    padding: 0;
-    margin: 0;
     list-style-type: none;
 
     .filter {
@@ -41,7 +40,7 @@
         height: 20px;
         margin-left: -30px;
         margin-top: -1px;
-        box-shadow: 0 0 0 1px #9ABBCE;
+        box-shadow: 0 0 0 1px $cbBorderColor;
         border-radius: 2px;
         background: white no-repeat center center;
       }
@@ -53,17 +52,17 @@
 
       .input:focus+.checkBox {
         box-shadow:
-          0 0 0 1px #9ABBCE,
-          0 0 0 2px red;
+          0 0 0 1px $cbBorderColor,
+          0 0 0 2px $cbBorderFocusColor;
       }
 
       .input:checked+.checkBox {
-        background-image: url(./check.svg);
+        background-image: url(../../assets/filters/check.svg);
       }
     }
 
     .filter:hover {
-      background-color: #F1FCFF;
+      background-color: $filterHoverColor;
     }
   }
 }

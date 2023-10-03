@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import './app.scss';
-import logo from './logo.png';
+import logo from '../../assets/app/logo.png';
 
 import Filters from '../filters';
 import TicketList from '../ticketList';
-import { fetchSearchId } from '../actions';
+import { fetchSearchId } from '../../actions';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchSearchId());
   }, [dispatch]);
+
   return (
     <>
       <header>

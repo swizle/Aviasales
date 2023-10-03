@@ -1,3 +1,5 @@
+@import '../../varuables/varuables';
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +8,7 @@
 
 html,
 body {
-  background-color: #F3F7FA;
+  background-color: $backgroundColor;
   font-family: 'microsoft sans serif';
   display: flex;
   justify-content: center;
