@@ -1,5 +1,4 @@
-## Vercel adres: ""
-https://aviasales-puce-mu.vercel.app/
+## Vercel adres: [https://aviasales-puce-mu.vercel.app/]
 
 ## Available Scripts
 
