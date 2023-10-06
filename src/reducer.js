@@ -1,6 +1,6 @@
 /* eslint-disable default-param-last */
 import {
-  TOGGLE_SORT_FILTER, TOGGLE_ALL_FILTERS, GET_SEARCH_ID, GET_TICKETS,
+  TOGGLE_SORT_FILTER, TOGGLE_ALL_FILTERS, GET_SEARCH_ID, GET_TICKETS, ADD_TICKETS,
 } from './actions';
 
 const initialState = {
@@ -74,6 +74,12 @@ const reducer = (state = initialState, action) => {
       };
 
     case GET_TICKETS:
+      return {
+        ...state,
+        tickets: action.payload,
+      };
+
+    case ADD_TICKETS:
       return {
         ...state,
         tickets: [...state.tickets, ...action.payload],

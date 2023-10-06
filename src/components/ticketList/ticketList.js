@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './ticketList.scss';
 
 import Ticket from '../ticket';
-import { fetchTickets } from '../../actions';
+import { fetchTicketsFirst, fetchTickets } from '../../actions';
 
 export default function TicketList() {
   const dispatch = useDispatch();
@@ -24,9 +24,16 @@ export default function TicketList() {
 
   useEffect(() => {
     if (searchId) {
-      dispatch(fetchTickets(searchId))
+      dispatch(fetchTicketsFirst(searchId))
         .then(() => {
           setLoading(false);
+
+          dispatch(fetchTickets(searchId))
+            .then(() => {
+            })
+            .catch((error) => {
+              console.error('Error fetching tickets:', error);
+            });
         })
         .catch((error) => {
           console.error('Error fetching tickets:', error);
