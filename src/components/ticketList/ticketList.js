@@ -17,6 +17,11 @@ export default function TicketList() {
   const [activeButton, setActiveButton] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const buttons = [
+    { id: 'cheapest', label: 'самый дешевый' },
+    { id: 'fastest', label: 'самый быстрый' },
+  ];
+
   useEffect(() => {
     if (searchId) {
       dispatch(fetchTickets(searchId))
@@ -53,42 +58,36 @@ export default function TicketList() {
     setListSize(newSize);
   };
 
-  const handleBtnCheap = () => {
-    const cheapestTickets = [...filteredTickets].sort((a, b) => a.price - b.price);
-    setFilteredTickets(cheapestTickets);
-    setActiveButton('cheapest');
-  };
-
-  const handleBtnFast = () => {
-    const fastestTickets = [...filteredTickets].sort((a, b) => {
-      const durationA = a.segments[0].duration + a.segments[1].duration;
-      const durationB = b.segments[0].duration + b.segments[1].duration;
-      return durationA - durationB;
-    });
-    setFilteredTickets(fastestTickets);
-    setActiveButton('fastest');
+  const handleButtonClick = (id) => {
+    setActiveButton(id);
+    if (id === 'cheapest') {
+      const cheapestTickets = [...filteredTickets].sort((a, b) => a.price - b.price);
+      setFilteredTickets(cheapestTickets);
+      setActiveButton('cheapest');
+    } else if (id === 'fastest') {
+      const fastestTickets = [...filteredTickets].sort((a, b) => {
+        const durationA = a.segments[0].duration + a.segments[1].duration;
+        const durationB = b.segments[0].duration + b.segments[1].duration;
+        return durationA - durationB;
+      });
+      setFilteredTickets(fastestTickets);
+      setActiveButton('fastest');
+    }
   };
 
   return (
     <section className="TicketList">
       <section className="tabs">
-        <button
-          className={`btnTab ${activeButton === 'cheapest' ? 'active' : ''}`}
-          type="button"
-          onClick={handleBtnCheap}
-        >
-          самый дешевый
-        </button>
-        <button
-          className={`btnTab ${activeButton === 'fastest' ? 'active' : ''}`}
-          type="button"
-          onClick={handleBtnFast}
-        >
-          самый быстрый
-        </button>
-        <button className="btnTab" type="button">
-          оптимальный
-        </button>
+        {buttons.map((button) => (
+          <button
+            key={button.id}
+            className={`btnTab ${activeButton === button.id ? 'active' : ''}`}
+            type="button"
+            onClick={() => handleButtonClick(button.id)}
+          >
+            {button.label}
+          </button>
+        ))}
       </section>
       {loading ? (
         <section className="loader">

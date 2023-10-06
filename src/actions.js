@@ -36,14 +36,25 @@ export const fetchSearchId = () => async (dispatch) => {
 
 export const fetchTickets = (searchId) => async (dispatch) => {
   try {
-    const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`);
+    const getTicketsRecursively = async () => {
+      const response = await axios.get(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`);
+      const { stop, tickets: newTickets } = response.data;
 
-    const updatedTickets = response.data.tickets.map((ticket, index) => ({
-      ...ticket,
-      ticketId: index,
-    }));
+      if (newTickets) {
+        const updatedTickets = newTickets.map((ticket, index) => ({
+          ...ticket,
+          ticketId: index,
+        }));
 
-    dispatch(getTickets(updatedTickets));
+        dispatch(getTickets(updatedTickets));
+      }
+
+      if (!stop) {
+        await getTicketsRecursively();
+      }
+    };
+
+    await getTicketsRecursively();
   } catch (error) {
     console.error('Error fetching tickets:', error);
   }

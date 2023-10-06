@@ -13,7 +13,6 @@ const initialState = {
   },
   searchId: '',
   tickets: [],
-  stop: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -77,7 +76,7 @@ const reducer = (state = initialState, action) => {
     case GET_TICKETS:
       return {
         ...state,
-        tickets: action.payload,
+        tickets: [...state.tickets, ...action.payload],
       };
 
     default:

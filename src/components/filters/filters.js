@@ -9,12 +9,20 @@ function Filters() {
 
   const dispatch = useDispatch();
 
+  const checkboxes = [
+    { id: 'all', label: 'Все' },
+    { id: 'noStops', label: 'Без пересадок' },
+    { id: 'oneStop', label: '1 пересадка' },
+    { id: 'twoStops', label: '2 пересадки' },
+    { id: 'threeStops', label: '3 пересадки' },
+  ];
+
   const handleToggleFilter = (filterName) => {
     dispatch(toggleSortFilter(filterName));
   };
 
-  const handleToggleAllFilters = (filterName) => {
-    dispatch(toggleSortFilter(filterName));
+  const handleToggleAllFilters = () => {
+    dispatch(toggleSortFilter('all'));
     dispatch(toggleAllFilters(!filters.all));
   };
 
@@ -22,71 +30,21 @@ function Filters() {
     <section className="filterList">
       <p className="title">количество пересадок</p>
       <ul className="filters">
-        <li className="filter">
-          <label htmlFor="1" className="container">
-            <input
-              id="1"
-              className="input"
-              type="checkbox"
-              checked={filters.all}
-              onChange={() => handleToggleAllFilters('all')}
-            />
-            <span className="checkBox" />
-            Все
-          </label>
-        </li>
-        <li className="filter">
-          <label htmlFor="2" className="container">
-            <input
-              id="2"
-              className="input"
-              type="checkbox"
-              checked={filters.noStops}
-              onChange={() => handleToggleFilter('noStops')}
-            />
-            <span className="checkBox" />
-            Без пересадок
-          </label>
-        </li>
-        <li className="filter">
-          <label htmlFor="3" className="container">
-            <input
-              id="3"
-              className="input"
-              type="checkbox"
-              checked={filters.oneStop}
-              onChange={() => handleToggleFilter('oneStop')}
-            />
-            <span className="checkBox" />
-            1 пересадка
-          </label>
-        </li>
-        <li className="filter">
-          <label htmlFor="4" className="container">
-            <input
-              id="4"
-              className="input"
-              type="checkbox"
-              checked={filters.twoStops}
-              onChange={() => handleToggleFilter('twoStops')}
-            />
-            <span className="checkBox" />
-            2 пересадки
-          </label>
-        </li>
-        <li className="filter">
-          <label htmlFor="5" className="container">
-            <input
-              id="5"
-              className="input"
-              type="checkbox"
-              checked={filters.threeStops}
-              onChange={() => handleToggleFilter('threeStops')}
-            />
-            <span className="checkBox" />
-            3 пересадки
-          </label>
-        </li>
+        {checkboxes.map((checkbox) => (
+          <li className="filter" key={checkbox.id}>
+            <label htmlFor={checkbox.id} className="container">
+              <input
+                id={checkbox.id}
+                className="input"
+                type="checkbox"
+                checked={checkbox.id === 'all' ? filters.all : filters[checkbox.id]}
+                onChange={() => (checkbox.id === 'all' ? handleToggleAllFilters() : handleToggleFilter(checkbox.id))}
+              />
+              <span className="checkBox" />
+              {checkbox.label}
+            </label>
+          </li>
+        ))}
       </ul>
     </section>
   );
